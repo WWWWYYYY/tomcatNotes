@@ -1,0 +1,6 @@
+tomcatSrc 为tomcat源码 原版本为apache-tomcat-8.5.37-src
+catalina-home的内容为tomcat软件下的内容  版本为apache-tomcat-8.5.37
+
+启动 tomcatSrc 之前 tomcatSrc目录下新增pom.xml ；内容参考已存在的文件。（这里已经创建好了）
+打开Bootstrap类的main方法启动，启动时配置jvm参数 -Dcatalina.home="/Users/mac/PROJECT/WORKSPACE_GITHUB/tomcatNotes/catalina-home" 参数值要根据项目位置而变化。
+启动后发现找不到类，注释相应内容后再启动。
