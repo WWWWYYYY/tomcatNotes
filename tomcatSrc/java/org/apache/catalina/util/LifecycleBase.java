@@ -390,9 +390,9 @@ public abstract class LifecycleBase implements Lifecycle {
         }
 
         this.state = state;
-        String lifecycleEvent = state.getLifecycleEvent();
+        String lifecycleEvent = state.getLifecycleEvent();//before_init
         if (lifecycleEvent != null) {
-            fireLifecycleEvent(lifecycleEvent, data);
+            fireLifecycleEvent(lifecycleEvent, data);//触发所有的事件监听，监听在server.xml中配置好了
         }
     }
 

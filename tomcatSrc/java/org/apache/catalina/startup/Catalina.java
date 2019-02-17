@@ -549,7 +549,7 @@ public class Catalina {
         File file = null;
         try {
             try {
-                file = configFile();
+                file = configFile();//conf/server.xml
                 inputStream = new FileInputStream(file);
                 inputSource = new InputSource(file.toURI().toURL().toString());
             } catch (Exception e) {
@@ -607,7 +607,7 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
-                digester.parse(inputSource);
+                digester.parse(inputSource);//解析server.xml名设置到catalina对象下的server属性中
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " +
                         spe.getMessage());

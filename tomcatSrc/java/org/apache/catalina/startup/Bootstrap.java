@@ -61,11 +61,14 @@ public final class Bootstrap {
 
     private static final Pattern PATH_PATTERN = Pattern.compile("(\".*?\")|(([^,])*)");
 
+    /**
+     * 整个静态块就为了设置系统变量catalina.home和catalina.base 为绝对路径
+     */
     static {
         // Will always be non-null
         String userDir = System.getProperty("user.dir");
 
-        // Home first
+        // 从69行到107 就为了设置系统变量catalina.home的绝对路径
         String home = System.getProperty(Globals.CATALINA_HOME_PROP);
         File homeFile = null;
 
@@ -140,10 +143,12 @@ public final class Bootstrap {
 
     // -------------------------------------------------------- Private Methods
 
-
+    /**
+     * commonLoader\catalinaLoader\sharedLoader 都是同一个类加载器 URLClassLoader 加载catalina/lib下的jar包
+     */
     private void initClassLoaders() {
         try {
-            commonLoader = createClassLoader("common", null);
+            commonLoader = createClassLoader("common", null);//URLClassLoader加载catalina/lib下的jar包
             if( commonLoader == null ) {
                 // no config file, default to this loader - we might be in a 'single' env.
                 commonLoader=this.getClass().getClassLoader();
